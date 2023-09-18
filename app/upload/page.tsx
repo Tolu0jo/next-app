@@ -26,7 +26,6 @@ const UploadPage = () => {
           multiple: false,
         }}
         onUpload={(result, widget) => {
-          console.log(result);
           if (result.event !== "success") return;
           const info = result.info as CloudinaryResult;
           setPublicId(info.public_id);
