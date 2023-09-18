@@ -8,7 +8,7 @@ interface Props {
 }
 export const GET = async (req: NextRequest, { params: { id } }: Props) => {
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(id) },
+    where: { id },
   });
   if (!user)
     return NextResponse.json({ error: `user not found` }, { status: 404 });
@@ -21,7 +21,7 @@ export const PUT = async (req: NextRequest, { params: { id } }: Props) => {
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 404 });
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(id) },
+    where: { id },
   });
   if (!user)
     return NextResponse.json({ error: `user not found` }, { status: 404 });
@@ -38,7 +38,7 @@ export const PUT = async (req: NextRequest, { params: { id } }: Props) => {
 export const DELETE = async (req: NextRequest, { params: { id } }: Props) => {
   try {
     const user = await prisma.user.findUnique({
-        where: { id: parseInt(id) },
+        where: { id},
       });
       if (!user)  return NextResponse.json({ error: `user not found` }, { status: 404 });
    
